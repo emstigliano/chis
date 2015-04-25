@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:esb="http:///org/wso2/developerstudio/eclipse/gmf/esb" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmi:id="_1tbdYOrFEeSG1IJjHFVTTw" type="Esb" name="endpoint_GoogleTest.esb_diagram" measurementUnit="Pixel">
+  <children xmi:type="notation:Node" xmi:id="_2fGK4OrFEeSG1IJjHFVTTw" type="2001">
+    <children xmi:type="notation:DecorationNode" xmi:id="_2fJOMOrFEeSG1IJjHFVTTw" type="7001"/>
+    <children xmi:type="notation:Shape" xmi:id="_3Qw4YOrFEeSG1IJjHFVTTw" type="3642" fontName="Ubuntu">
+      <children xmi:type="notation:BasicCompartment" xmi:id="_3QxfcOrFEeSG1IJjHFVTTw" type="7041">
+        <children xmi:type="notation:Node" xmi:id="_3RM9QOrFEeSG1IJjHFVTTw" type="3712">
+          <styles xmi:type="notation:DescriptionStyle" xmi:id="_3RM9QerFEeSG1IJjHFVTTw"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_3RM9QurFEeSG1IJjHFVTTw" fontName="Ubuntu"/>
+          <styles xmi:type="notation:LineStyle" xmi:id="_3RM9Q-rFEeSG1IJjHFVTTw"/>
+          <element xmi:type="esb:HTTPEndpoint" href="endpoint_GoogleTest.esb#//@server/@children.0/@child"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_3RM9ROrFEeSG1IJjHFVTTw" width="75" height="75"/>
+        </children>
+        <styles xmi:type="notation:TitleStyle" xmi:id="_3QxfcerFEeSG1IJjHFVTTw" showTitle="true"/>
+      </children>
+      <element xmi:type="esb:EndpointDiagram" href="endpoint_GoogleTest.esb#//@server/@children.0"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_3Qw4YerFEeSG1IJjHFVTTw" width="110" height="100"/>
+    </children>
+    <styles xmi:type="notation:DescriptionStyle" xmi:id="_2fGK4erFEeSG1IJjHFVTTw"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_2fGK4urFEeSG1IJjHFVTTw" fontName="Ubuntu"/>
+    <styles xmi:type="notation:LineStyle" xmi:id="_2fGK4-rFEeSG1IJjHFVTTw"/>
+    <element xmi:type="esb:EsbServer" href="endpoint_GoogleTest.esb#//@server"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2fGK5OrFEeSG1IJjHFVTTw"/>
+  </children>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_1tcEcOrFEeSG1IJjHFVTTw"/>
+  <element xmi:type="esb:EsbDiagram" href="endpoint_GoogleTest.esb#/"/>
+</notation:Diagram>
