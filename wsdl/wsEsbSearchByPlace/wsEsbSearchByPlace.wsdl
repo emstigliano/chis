@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="wsEsbSearchByPlace"
+	targetNamespace="http://www.esbforchis.it/wsEsbSearchByPlace/"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.esbforchis.it/wsEsbSearchByPlace/"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:xsd1="http://www.esbforchis.it/wsEsbSearchByPlace">
+
+	<wsdl:types>
+		<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+			<xsd:import namespace="http://www.esbforchis.it/wsEsbSearchByPlace"
+				schemaLocation="wsEsbSearchByPlace.xsd"></xsd:import>
+		</xsd:schema>
+	</wsdl:types>
+
+
+
+	<wsdl:message name="getDescriptionsResponse">
+		<wsdl:part element="xsd1:getDescriptionsOutput" name="getDescriptionsOutput" />
+	</wsdl:message>
+	<wsdl:message name="getDescriptionsRequest">
+		<wsdl:part element="xsd1:getDescriptionsInput" name="getDescriptionsInput" />
+	</wsdl:message>
+
+
+	<wsdl:message name="getImagesResponse">
+		<wsdl:part element="xsd1:getImagesOutput" name="getImagesOutput" />
+	</wsdl:message>
+	<wsdl:message name="getImagesRequest">
+		<wsdl:part element="xsd1:getImagesInput" name="getImagesInput" />
+	</wsdl:message>
+
+	<wsdl:message name="getTwitterResultResponse">
+		<wsdl:part element="xsd1:getTwitterResultOutput" name="getTwitterResultOutput" />
+	</wsdl:message>
+	<wsdl:message name="getTwitterResultRequest">
+		<wsdl:part element="xsd1:getTwitterResultInput" name="getTwitterResultInput" />
+	</wsdl:message>
+	
+	<wsdl:message name="getOtherInfoResponse">
+		<wsdl:part element="xsd1:getOtherInfoOutput" name="getOtherInfoOutput" />
+	</wsdl:message>
+	<wsdl:message name="getOtherInfoRequest">
+		<wsdl:part element="xsd1:getOtherInfoInput" name="getOtherInfoInput" />
+	</wsdl:message>
+
+	<wsdl:portType name="wsEsbSearchByPlace">
+
+		<wsdl:operation name="getDescriptions">
+			<wsdl:input message="tns:getDescriptionsRequest" />
+			<wsdl:output message="tns:getDescriptionsResponse" />
+		</wsdl:operation>
+
+
+		<wsdl:operation name="getImages">
+			<wsdl:input message="tns:getImagesRequest" />
+			<wsdl:output message="tns:getImagesResponse" />
+		</wsdl:operation>
+
+		<wsdl:operation name="getTwitterResult">
+			<wsdl:input message="tns:getTwitterResultRequest" />
+			<wsdl:output message="tns:getTwitterResultResponse" />
+		</wsdl:operation>
+		<wsdl:operation name="getOtherInfo">
+			<wsdl:input message="tns:getOtherInfoRequest" />
+			<wsdl:output message="tns:getOtherInfoResponse" />
+		</wsdl:operation>
+
+	</wsdl:portType>
+
+	<wsdl:binding name="wsEsbSearchByPlaceSOAP" type="tns:wsEsbSearchByPlace">		<soap:binding style="document"			transport="http://schemas.xmlsoap.org/soap/http" />		<wsdl:operation name="getDescriptions">
+			<soap:operation
+				soapAction="http://www.esbforchis.it/wsEsbSearchByPlace/getDescriptions" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getImages">
+			<soap:operation
+				soapAction="http://www.esbforchis.it/wsEsbSearchByPlace/getImages" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getTwitterResult">
+			<soap:operation
+				soapAction="http://www.esbforchis.it/wsEsbSearchByPlace/getTwitterResult" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getOtherInfo">
+			<soap:operation
+				soapAction="http://www.esbforchis.it/wsEsbSearchByPlace/getOtherInfo" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+
+	<wsdl:service name="wsEsbSearchByPlace">
+		<wsdl:port binding="tns:wsEsbSearchByPlaceSOAP" name="wsEsbSearchByPlaceSOAP">
+			<soap:address location="http://www.esbforchis.it/" />
+		</wsdl:port>
+	</wsdl:service>
+
+</wsdl:definitions>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="wsEsbSearchTools"
+	targetNamespace="http://www.esbforchis.it/wsEsbSearchTools/"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.esbforchis.it/wsEsbSearchTools/"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:xsd1="http://www.esbforchis.it/wsEsbSearchTools">
+
+	<wsdl:types>
+		<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+			<xsd:import namespace="http://www.esbforchis.it/wsEsbSearchTools"
+				schemaLocation="wsEsbSearchTools.xsd"></xsd:import>
+		</xsd:schema>
+	</wsdl:types>
+
+
+
+	<wsdl:message name="searchForPositionResponse">
+		<wsdl:part element="xsd1:searchForPositionOutput" name="searchForPositionOutput" />
+	</wsdl:message>
+	<wsdl:message name="searchForPositionRequest">
+		<wsdl:part element="xsd1:searchForPositionInput" name="searchForPositionInput" />
+	</wsdl:message>
+
+
+	<wsdl:message name="searchForTypologyResponse">
+		<wsdl:part element="xsd1:searchForTypologyOutput" name="searchForTypologyOutput" />
+	</wsdl:message>
+	<wsdl:message name="searchForTypologyRequest">
+		<wsdl:part element="xsd1:searchForTypologyInput" name="searchForTypologyInput" />
+	</wsdl:message>
+
+	<wsdl:message name="searchForNameResponse">
+		<wsdl:part element="xsd1:searchForNameOutput" name="searchForNameOutput" />
+	</wsdl:message>
+	<wsdl:message name="searchForNameRequest">
+		<wsdl:part element="xsd1:searchForNameInput" name="searchForNameInput" />
+	</wsdl:message>
+
+	<wsdl:portType name="wsEsbSearchTools">
+
+		<wsdl:operation name="searchForPosition">
+			<wsdl:input message="tns:searchForPositionRequest" />
+			<wsdl:output message="tns:searchForPositionResponse" />
+		</wsdl:operation>
+
+
+		<wsdl:operation name="searchForTypology">
+			<wsdl:input message="tns:searchForTypologyRequest" />
+			<wsdl:output message="tns:searchForTypologyResponse" />
+		</wsdl:operation>
+
+		<wsdl:operation name="searchForName">
+			<wsdl:input message="tns:searchForNameRequest" />
+			<wsdl:output message="tns:searchForNameResponse" />
+		</wsdl:operation>
+
+	</wsdl:portType>
+
+	<wsdl:binding name="wsEsbSearchToolsSOAP" type="tns:wsEsbSearchTools">		<soap:binding style="document"			transport="http://schemas.xmlsoap.org/soap/http" />		<wsdl:operation name="searchForPosition">
+			<soap:operation
+				soapAction="http://www.esbforchis.it/wsEsbSearchTools/searchForPosition" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="searchForTypology">
+			<soap:operation
+				soapAction="http://www.esbforchis.it/wsEsbSearchTools/searchForTypology" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="searchForName">
+			<soap:operation
+				soapAction="http://www.esbforchis.it/wsEsbSearchTools/searchForName" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+
+	<wsdl:service name="wsEsbSearchTools">
+		<wsdl:port binding="tns:wsEsbSearchToolsSOAP" name="wsEsbSearchToolsSOAP">
+			<soap:address location="http://www.esbforchis.it/" />
+		</wsdl:port>
+	</wsdl:service>
+
+</wsdl:definitions>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.esbforchis.it/wsEsbSearchByPlace"
+	xmlns:tns="http://www.esbforchis.it/wsEsbSearchByPlace">
+	
+			
+	<element name="getImagesInput" type="tns:getImagesInput"></element>
+	
+	<element name="getImagesOutput" type="tns:getImagesOutput"></element>
+	
+	<complexType name="getImagesInput">
+		<sequence>
+		<element name="place" type="string" minOccurs="1" maxOccurs="1"></element>
+		</sequence>
+	</complexType>
+	
+	<complexType name="getImagesOutput">
+		<sequence>
+			<element name="image" type="tns:image" minOccurs="0"  maxOccurs="unbounded"></element>
+			<element name="errorCode" type="string" minOccurs="0"></element>
+			<element name="errorDescription" type="string" minOccurs="0"></element>
+		</sequence>
+	</complexType>
+	<complexType name="image">
+		<sequence>
+			<element name="url" type="string" minOccurs="0"></element>
+			<element name="caption" type="string" minOccurs="0"></element>
+		</sequence>
+	</complexType>
+	
+	
+	<element name="getDescriptionsInput" type="tns:getDescriptionsInput"></element>
+	
+	<element name="getDescriptionsOutput" type="tns:getDescriptionsOutput"></element>
+	
+	<complexType name="getDescriptionsInput">
+		<sequence>
+		<element name="place" type="string" minOccurs="1" maxOccurs="1"></element>
+			</sequence>
+	</complexType>
+	
+	<complexType name="getDescriptionsOutput">
+		<sequence>
+			<element name="description" type="string" minOccurs="0"  maxOccurs="unbounded"></element>
+			<element name="errorCode" type="string" minOccurs="0"></element>
+			<element name="errorDescription" type="string" minOccurs="0"></element>
+		</sequence>
+	</complexType>
+	
+		<element name="getTwitterResultInput" type="tns:getTwitterResultInput"></element>
+	
+	<element name="getTwitterResultOutput" type="tns:getTwitterResultOutput"></element>
+	
+	<complexType name="getTwitterResultInput">
+		<sequence>
+			<element name="place" type="string" minOccurs="1" maxOccurs="1"></element>
+			</sequence>
+	</complexType>
+	
+	<complexType name="getTwitterResultOutput">
+		<sequence>
+			<element name="twitterResult" type="string" minOccurs="0"  maxOccurs="unbounded"></element>
+			<element name="errorCode" type="string" minOccurs="0"></element>
+			<element name="errorDescription" type="string" minOccurs="0"></element>
+		</sequence>
+	</complexType>
+	
+	
+	
+		<element name="getOtherInfoInput" type="tns:getOtherInfoInput"></element>
+	
+	<element name="getOtherInfoOutput" type="tns:getOtherInfoOutput"></element>
+	
+	<complexType name="getOtherInfoInput">
+		<sequence>
+			<element name="place" type="string" minOccurs="1" maxOccurs="1"></element>
+			</sequence>
+	</complexType>
+	
+	<complexType name="getOtherInfoOutput">
+		<sequence>
+			<element name="couple" type="tns:couple" minOccurs="0"  maxOccurs="unbounded"></element>
+			<element name="errorCode" type="string" minOccurs="0"></element>
+			<element name="errorDescription" type="string" minOccurs="0"></element>
+		</sequence>
+	</complexType>
+	<complexType name="couple">
+		<sequence>
+			<element name="key" type="string" ></element>
+			<element name="value" type="string" ></element>
+		</sequence>
+	</complexType>
+	
+	
+</schema>

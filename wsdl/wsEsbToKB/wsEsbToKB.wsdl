@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="wsEsbToKB"
+	targetNamespace="http://www.esbforchis.it/wsEsbToKB/" 
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tns="http://www.esbforchis.it/wsEsbToKB/" 
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+	xmlns:xsd1="http://www.esbforchis.it/wsEsbToKB">
+	
+	<wsdl:types>
+		<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+			<xsd:import namespace="http://www.esbforchis.it/wsEsbToKB"
+				schemaLocation="wsEsbToKB.xsd"></xsd:import>
+		</xsd:schema>
+	</wsdl:types>
+	
+	<wsdl:message name="addEntityResponse">
+		<wsdl:part element="xsd1:addEntityOutput" name="addEntityOutput" />
+	</wsdl:message>
+	<wsdl:message name="addEntityRequest">
+		<wsdl:part element="xsd1:addEntityInput" name="addEntityInput" />
+	</wsdl:message>
+		<wsdl:message name="addEntitiesResponse">
+		<wsdl:part element="xsd1:addEntitiesOutput" name="addEntitiesOutput" />
+	</wsdl:message>
+	<wsdl:message name="addEntitiesRequest">
+		<wsdl:part element="xsd1:addEntitiesInput" name="addEntitiesInput" />
+	</wsdl:message>
+		
+	<wsdl:portType name="wsEsbToKB">
+		<wsdl:operation name="addEntity">
+			<wsdl:input message="tns:addEntityRequest" />
+			<wsdl:output message="tns:addEntityResponse" />
+		</wsdl:operation>
+		<wsdl:operation name="addEntities">
+			<wsdl:input message="tns:addEntitiesRequest" />
+			<wsdl:output message="tns:addEntitiesResponse" />
+		</wsdl:operation>
+	</wsdl:portType>
+	
+	<wsdl:binding name="wsEsbToKBSOAP" type="tns:wsEsbToKB">		<soap:binding style="document"			transport="http://schemas.xmlsoap.org/soap/http" />		<wsdl:operation name="addEntity">
+			<soap:operation soapAction="http://www.esbforchis.it/wsEsbToKB/addEntity" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="addEntities">
+			<soap:operation soapAction="http://www.esbforchis.it/wsEsbToKB/addEntities" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	
+	<wsdl:service name="wsEsbToKB">
+		<wsdl:port binding="tns:wsEsbToKBSOAP" name="wsEsbToKBSOAP">
+			<soap:address location="http://www.esbforchis.it/" />
+		</wsdl:port>
+	</wsdl:service>
+	
+</wsdl:definitions>

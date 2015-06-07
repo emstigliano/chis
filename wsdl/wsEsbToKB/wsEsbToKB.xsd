@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.esbforchis.it/wsEsbToKB"
+	xmlns:tns="http://www.esbforchis.it/wsEsbToKB">
+	
+	<complexType name="value">
+		<attribute name="prefix" type="string" />
+	</complexType>
+	
+	<complexType name="entity">
+		<sequence>
+			<element name="value" type="tns:value" maxOccurs="unbounded"
+				minOccurs="1" />
+		</sequence>
+	</complexType>
+	
+	<complexType name="response">
+		<sequence>
+			<element name="result" type="string" minOccurs="1"></element>
+			<element name="errorCode" type="string"></element>
+			<element name="errorDescription" type="string"></element>
+		</sequence>
+	</complexType>
+		
+	<element name="addEntityInput" type="tns:addEntityInput"></element>
+	
+	<element name="addEntityOutput" type="tns:addEntityOutput"></element>
+	<complexType name="addEntityInput">
+		<sequence>
+			<element name="entity" type="tns:entity" maxOccurs="1"
+				minOccurs="1"></element>
+		</sequence>
+	</complexType>
+	
+	<complexType name="addEntityOutput">
+		<sequence>
+			<element name="response" type="tns:response" maxOccurs="1"
+				minOccurs="1"></element>
+		</sequence>
+	</complexType>
+	
+	<element name="addEntitiesInput" type="tns:addEntitiesInput"></element>
+	
+	<element name="addEntitiesOutput" type="tns:addEntitiesOutput"></element>
+	
+	<complexType name="addEntitiesInput">
+		<sequence>
+			<element name="entity" type="tns:entity" maxOccurs="unbounded"
+				minOccurs="1"></element>
+		</sequence>
+	</complexType>
+	
+	<complexType name="addEntitiesOutput">
+		<sequence>
+			<element name="response" type="tns:response" maxOccurs="1"
+				minOccurs="1"></element>
+		</sequence>
+	</complexType>
+	
+</schema>

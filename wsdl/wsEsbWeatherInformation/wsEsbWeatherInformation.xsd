@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.esbforchis.it/wsEsbWeatherInformation"
+	xmlns:tns="http://www.esbforchis.it/wsEsbWeatherInformation">
+			
+	<element name="getWeatherInformationInput" type="tns:getWeatherInformationInput"></element>
+	
+	<element name="getWeatherInformationOutput" type="tns:getWeatherInformationOutput"></element>
+	
+	<complexType name="getWeatherInformationInput">
+		<sequence>
+		<element name="place" type="string" minOccurs="1"  maxOccurs="1"></element>
+		</sequence>
+	</complexType>
+	
+	<complexType name="getWeatherInformationOutput">
+		<sequence>
+			<element name="info" type="tns:info" maxOccurs="unbounded"	minOccurs="0" />
+			<element name="errorCode" type="string" minOccurs="0"></element>
+			<element name="errorDescription" type="string" minOccurs="0"></element>
+		</sequence>
+	</complexType>
+	
+	<complexType name="info">
+		<sequence>
+			<element name="date" type="string" ></element>
+			<element name="day" type="string" ></element>
+			<element name="high" type="string" ></element>
+			<element name="low" type="string" ></element>		
+			<element name="text" type="string" ></element>		
+		</sequence>
+	</complexType>
+	
+</schema>

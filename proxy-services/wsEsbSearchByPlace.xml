@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy xmlns="http://ws.apache.org/ns/synapse" name="wsEsbSearchByPlace" transports="https http" startOnLoad="true" trace="enable">
+    <target>
+        <inSequence>
+            <log level="full"/>
+            <property name="SOAP_ACTION" expression="get-property('Action')" scope="default" type="STRING"/>
+            <log level="custom">
+                <property name="SOAP_ACTION" expression="get-property('SOAP_ACTION')"/>
+            </log>
+            <switch source="get-property('SOAP_ACTION')">
+                <case regex="http://www.esbforchis.it/wsEsbSearchByPlace/getDescriptions">
+                    <log level="full"/>
+                    <class name="it.unina.bk.getentity.BKGetEntityClient">
+                        <property name="urlGetContext" value="http://localhost:8090/getContext"/>
+                        <property name="urlGetEntity" value="http://localhost:8090/getEntity"/>
+                    </class>
+                    <log level="full"/>
+                    <property name="messageType" value="text/xml" scope="axis2" type="STRING"/>
+                    <xquery key="gov:/trasformations/GetDescriptionsOutput.xq">
+                        <variable name="input" expression="//response" type="ELEMENT"/>
+                    </xquery>
+                    <payloadFactory media-type="xml">
+                        <format>
+                            <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+                                <soapenv:Body>$1</soapenv:Body>
+                            </soapenv:Envelope>
+                        </format>
+                        <args>
+                            <arg xmlns:wses="http://www.esbforchis.it/wsEsbSearchByPlace" evaluator="xml" expression="//wses:getDescriptionsOutput"/>
+                        </args>
+                    </payloadFactory>
+                    <log level="full"/>
+                </case>
+                <case regex="http://www.esbforchis.it/wsEsbSearchByPlace/getImages">
+                    <log level="full"/>
+                    <class name="it.unina.bk.getentity.BKGetEntityClient">
+                        <property name="urlGetContext" value="http://localhost:8090/getContext"/>
+                        <property name="urlGetEntity" value="http://localhost:8090/getEntity"/>
+                    </class>
+                    <log level="full"/>
+                    <property name="messageType" value="text/xml" scope="axis2" type="STRING"/>
+                    <xquery key="gov:/trasformations/GetImagesOutput.xq">
+                        <variable name="input" expression="//response" type="ELEMENT"/>
+                    </xquery>
+                    <payloadFactory media-type="xml">
+                        <format>
+                            <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+                                <soapenv:Body>$1</soapenv:Body>
+                            </soapenv:Envelope>
+                        </format>
+                        <args>
+                            <arg xmlns:wses="http://www.esbforchis.it/wsEsbSearchByPlace" evaluator="xml" expression="//wses:getImagesOutput"/>
+                        </args>
+                    </payloadFactory>
+                    <log level="full"/>
+                </case>
+                <case regex="http://www.esbforchis.it/wsEsbSearchByPlace/getOtherInfo">
+                    <log level="full"/>
+                    <class name="it.unina.bk.getentity.BKGetEntityClient">
+                        <property name="urlGetContext" value="http://localhost:8090/getContext"/>
+                        <property name="urlGetEntity" value="http://localhost:8090/getEntity"/>
+                    </class>
+                    <log level="full"/>
+                    <property name="messageType" value="text/xml" scope="axis2" type="STRING"/>
+                    <xquery key="gov:/trasformations/GetOtherInfoOutput.xq">
+                        <variable name="input" expression="//response" type="ELEMENT"/>
+                    </xquery>
+                    <payloadFactory media-type="xml">
+                        <format>
+                            <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+                                <soapenv:Body>$1</soapenv:Body>
+                            </soapenv:Envelope>
+                        </format>
+                        <args>
+                            <arg xmlns:wses="http://www.esbforchis.it/wsEsbSearchByPlace" evaluator="xml" expression="//wses:getOtherInfoOutput"/>
+                        </args>
+                    </payloadFactory>
+                    <log level="full"/>
+                </case>
+                <case regex="http://www.esbforchis.it/wsEsbSearchByPlace/getTwitterResult">
+                    <twitter.init>
+                        <consumerKey>mUHXbHVt8bOJ06zfY4aTYRvoV</consumerKey>
+                        <consumerSecret>mR8xkHdIugb0xG218SAfeLZyr1xnE5LTX2bphrVm2SCsBapOQw</consumerSecret>
+                        <accessToken>360775800-jGH2McmF8c44rqkBLsIhKw1IiMIEsNkaHHpsdLJh</accessToken>
+                        <accessTokenSecret>AVnWWCf8Z1x6l9ZKNthhYEssY8Z7TcTmmZhRkQcqfd7iG</accessTokenSecret>
+                    </twitter.init>
+                    <log level="full"/>
+                    <twitter.search>
+                        <search>Museo%20Madre%20Napoli</search>
+                    </twitter.search>
+                    <log level="full"/>
+                    <property name="messageType" value="text/xml" scope="axis2" type="STRING"/>
+                    <log level="full"/>
+                    <xquery key="gov:/trasformations/GetTwitterResultOutput.xq">
+                        <variable name="input" expression="//jsonObject" type="ELEMENT"/>
+                    </xquery>
+                </case>
+                <default/>
+            </switch>
+            <respond/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence/>
+    </target>
+    <publishWSDL key="gov:/wsdl/wsEsbSearchByPlace/wsEsbSearchByPlace.wsdl">
+        <resource location="wsEsbSearchByPlace.xsd" key="gov:/wsdl/wsEsbSearchByPlace/wsEsbSearchByPlace.xsd"/>
+    </publishWSDL>
+</proxy>

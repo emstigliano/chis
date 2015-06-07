@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy xmlns="http://ws.apache.org/ns/synapse" name="wsEsbWeatherInformation" transports="https http" startOnLoad="true" trace="enable">
+    <target>
+        <inSequence>
+            <log level="full"/>
+            <class name="it.unina.bk.getentity.BKGetEntityClient">
+                <property name="urlGetContext" value="http://localhost:8090/getContext"/>
+                <property name="urlGetEntity" value="http://localhost:8090/getEntity"/>
+            </class>
+            <property xmlns:dc="http://purl.org/dc/elements/1.1/" name="place" expression="//dc:provincia/text()" scope="default" type="STRING"/>
+            <property name="uri.var.query" expression="fn:concat('select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22',get-property('place'),'%22)')" scope="default" type="STRING"/>
+            <property xmlns:ns="http://org.apache.synapse/xsd" name="REST_URL_POSTFIX" expression="fn:concat('?q=',get-property('uri.var.query'))" scope="axis2" type="STRING"/>
+            <log level="custom">
+                <property name="place" expression="get-property('place')"/>
+                <property name="url" expression="get-property('axis2','REST_URL_POSTFIX')"/>
+            </log>
+            <property name="HTTP_METHOD" value="GET" scope="axis2" type="STRING"/>
+            <send>
+                <endpoint>
+                    <address uri="https://query.yahooapis.com/v1/public/yql" format="rest"/>
+                </endpoint>
+            </send>
+        </inSequence>
+        <outSequence>
+            <property name="messageType" value="text/xml" scope="axis2" type="STRING"/>
+            <xquery key="gov:/trasformations/GetWeatherInformationOutput.xq">
+                <variable name="input" expression="//query" type="ELEMENT"/>
+            </xquery>
+            <log level="full"/>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </target>
+    <publishWSDL key="gov:/wsdl/wsEsbWeatherInformation/wsEsbWeatherInformation.wsdl">
+        <resource location="wsEsbWeatherInformation.xsd" key="gov:/wsdl/wsEsbWeatherInformation/wsEsbWeatherInformation.xsd"/>
+    </publishWSDL>
+</proxy>

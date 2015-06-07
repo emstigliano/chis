@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.esbforchis.it/wsEsbSearchTools"
+	xmlns:tns="http://www.esbforchis.it/wsEsbSearchTools">
+	
+			
+	<element name="searchForTypologyInput" type="tns:searchForTypologyInput"></element>
+	
+	<element name="searchForTypologyOutput" type="tns:searchForTypologyOutput"></element>
+	
+	<complexType name="searchForTypologyInput">
+		<sequence>
+		<element name="typology" type="string" minOccurs="1"></element>
+		</sequence>
+	</complexType>
+	
+	<complexType name="searchForTypologyOutput">
+		<sequence>
+			<element name="place" type="string" minOccurs="0"  maxOccurs="unbounded"></element>
+			<element name="errorCode" type="string" minOccurs="0"></element>
+			<element name="errorDescription" type="string" minOccurs="0"></element>
+		</sequence>
+	</complexType>
+	
+	
+	<element name="searchForPositionInput" type="tns:searchForPositionInput"></element>
+	
+	<element name="searchForPositionOutput" type="tns:searchForPositionOutput"></element>
+	
+	<complexType name="searchForPositionInput">
+		<sequence>
+		<element name="municipality" type="string" minOccurs="0"></element>
+		<element name="province" type="string" minOccurs="0"></element>
+		<element name="region" type="string" minOccurs="0"></element>
+		</sequence>
+	</complexType>
+	
+	<complexType name="searchForPositionOutput">
+		<sequence>
+			<element name="place" type="string" minOccurs="0"  maxOccurs="unbounded"></element>
+			<element name="errorCode" type="string" minOccurs="0"></element>
+			<element name="errorDescription" type="string" minOccurs="0"></element>
+		</sequence>
+	</complexType>
+	
+		<element name="searchForNameInput" type="tns:searchForNameInput"></element>
+	
+	<element name="searchForNameOutput" type="tns:searchForNameOutput"></element>
+	
+	<complexType name="searchForNameInput">
+		<sequence>
+		<element name="name" type="string" minOccurs="1"></element>
+		</sequence>
+	</complexType>
+	
+	<complexType name="searchForNameOutput">
+		<sequence>
+			<element name="place" type="string" minOccurs="0"  maxOccurs="unbounded"></element>
+			<element name="errorCode" type="string" minOccurs="0"></element>
+			<element name="errorDescription" type="string" minOccurs="0"></element>
+		</sequence>
+	</complexType>
+	
+	
+</schema>
