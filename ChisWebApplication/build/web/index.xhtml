@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui" xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>ChisProject</title>
+            </f:facet>
+        </h:head>
+
+        <h:body>
+
+
+            <h:form>            
+                <div align="center"> 
+
+                    <h:outputLink value="javascript:void(0)" onclick="PF('dlg').show();" title="login" >
+                        <p:graphicImage value="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTFV1RCxGO2rHLCxX7nb5MuOQOYc5eiMe4UldnlgXCIUVjxfns5cA" />
+                    </h:outputLink>
+
+                    <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+
+                    <p:dialog header="Login" widgetVar="dlg" resizable="false">
+                        <h:panelGrid columns="2" cellpadding="5">
+                            <h:outputLabel for="username" value="Username:" />
+                            <p:inputText id="username" value="#{userLoginView.username}" label="username" />
+
+                            <h:outputLabel for="password" value="Password:" />
+                            <p:password id="password" value="#{userLoginView.password}" label="password" />
+
+                            <f:facet name="footer">
+                                <p:commandButton value="Login" update="growl" actionListener="#{userLoginView.login}"
+                                                 oncomplete="handleLoginRequest(xhr, status, args)" />
+                            </f:facet>  
+                        </h:panelGrid>
+                    </p:dialog>
+                </div>
+            </h:form>
+
+            <script type="text/javascript">
+                function handleLoginRequest(xhr, status, args) {
+                    if (args.validationFailed || !args.loggedIn) {
+                        PF('dlg').jq.effect("shake", {times: 3}, 100);
+                    }
+                    else {
+                        PF('dlg').hide();
+                        window.location.replace("faces/ricerca.xhtml")
+                    }
+                }
+            </script>
+        </h:body>
+
+    </f:view>
+</html>
+
+
