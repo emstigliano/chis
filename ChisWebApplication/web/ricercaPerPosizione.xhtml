@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui" xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>ChisProject</title>
+            </f:facet>
+        </h:head>
+
+        <h:body>
+
+            <p:layout fullPage="true">
+
+                <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
+                     CHIS: Cultural Heritage Information System 
+                </p:layoutUnit>
+
+                <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
+                    Footer
+                </p:layoutUnit>
+
+                <p:layoutUnit position="center">
+
+                    <h:form styleClass="jsfcrud_list_form">
+                        <div align="center"> 
+                            <h:outputText value="Inserisci Comune   "/>
+                            <h:inputText value="#{ricercaPerPosizioneBean.municipality}" />
+                            <h:commandButton value=" Cerca " action="${ricercaPerPosizioneBean.callWS()}" />
+
+                            <p:separator /><p:separator />
+                            <h:outputText value="Inserisci Provincia  "/>
+                            <h:inputText value="#{ricercaPerPosizioneBean.provice}" />
+                            <h:commandButton value=" Cerca " action="${ricercaPerPosizioneBean.callWS()}" />
+
+                            <p:separator /><p:separator />
+                            <h:outputText value="Inserisci Regione    "/>
+                            <h:inputText value="#{ricercaPerPosizioneBean.region}" />
+                            <h:commandButton value=" Cerca " action="${ricercaPerPosizioneBean.callWS()}" />
+                        </div>
+                    </h:form>
+                    <h:form styleClass="jsfcrud_list_form">
+                        <p:separator /><p:separator />
+                        <p:dataTable var="singlePlace" value="#{ricercaPerPosizioneBean.place}">
+                            <p:column headerText="Risultati della ricerca"  style="font-size: 19px">
+                                <div align="center">
+                                    
+                                    <p:panelMenu>
+                                        <p:submenu label="#{singlePlace}">
+                                        <p:menuitem value="Mostra descrizione " action="${ricercaPerPosizioneBean.redirectToMostraDescrizione(singlePlace)}" icon="ui-icon-document" >
+                                            <f:param name="placeSelected" value="#{singlePlace}" />
+                                        </p:menuitem>
+                                        <p:menuitem value="Mostra immagini "  action="${ricercaPerPosizioneBean.redirectToMostraImmagini(singlePlace)}" icon="ui-icon-image" >
+                                            <f:param name="placeSelected" value="#{singlePlace}" />
+                                        </p:menuitem>
+                                        <p:menuitem value="Mostra informazioni meteo "  action="${ricercaPerPosizioneBean.redirectToInfoMeteo(singlePlace)}" icon="ui-icon-search" >
+                                            <f:param name="placeSelected" value="#{singlePlace}" />
+                                        </p:menuitem>
+                                        <p:menuitem value="Cerca #{singlePlace} su Twitter " action="${ricercaPerPosizioneBean.redirectToCercaSuTwitter(singlePlace)}" icon="ui-icon-person">
+                                            <f:param name="placeSelected" value="#{singlePlace}" />
+                                        </p:menuitem>
+                                        <p:menuitem value="Altro su #{singlePlace} " action="${ricercaPerPosizioneBean.redirectToAltro(singlePlace)}" >                            
+                                            <f:param name="placeSelected" value="#{singlePlace}" />
+                                        </p:menuitem>
+                                    </p:submenu>
+                                    </p:panelMenu>
+                                </div>
+                            </p:column>
+                        </p:dataTable>
+
+                    </h:form>
+
+                </p:layoutUnit>
+
+            </p:layout>
+
+        </h:body>
+
+    </f:view>
+</html>
+
